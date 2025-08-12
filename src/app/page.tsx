@@ -128,6 +128,9 @@ export default function Home() {
         >
           R3 Suprimentos © {new Date().getFullYear()}
         </a>
+        <p>
+          Desenvolvido por <a href="https://www.linkedin.com/in/christoferhenrique/" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-400">Christofer Henrique</a>
+        </p>
       </footer>
 
       {/* ANIMAÇÃO CSS (Tailwind plugin opcional ou customizado) */}
