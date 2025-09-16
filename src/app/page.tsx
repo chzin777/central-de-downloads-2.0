@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import TiltedCard from "@/components/TiltedCard/TiltedCard";
+import { ConfettiButton } from "@/components/ConfettiButton/ConfettiButton";
 
 const downloads = [
   {
@@ -48,7 +49,7 @@ export default function Home() {
   };
 
   return (
-    <div className="font-sans min-h-screen flex flex-col items-center justify-between p-8 sm:p-20 bg-gray-950 text-white relative">
+  <div className="font-sans min-h-screen flex flex-col items-center justify-between p-8 sm:p-20 text-white relative backdrop-blur-sm/30">
       {/* TOAST */}
       {toastVisible && (
         <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg animate-fade-in-out z-50">
@@ -58,14 +59,14 @@ export default function Home() {
 
       {/* LOGO */}
       <header className="w-full flex justify-center mb-8">
-        <Image
-          className="dark:invert"
-          src="/imgs/r3-logo.png"
-          alt="R3 Suprimentos logo"
-          width={200}
-          height={48}
-          priority
-        />
+          <img
+            className="dark:invert"
+            src="/imgs/r3-logo.png"
+            alt="R3 Suprimentos logo"
+            width={200}
+            height={48}
+            style={{ display: 'block' }}
+          />
       </header>
 
       {/* CONTEÚDO */}
@@ -77,20 +78,20 @@ export default function Home() {
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
           {downloads.map(({ name, href, icon }) => (
             <li key={name}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center p-6 border rounded-xl shadow hover:bg-[#94D33E] transition-all duration-200 transform hover:scale-105 cursor-pointer h-[180px] text-white"
-              >
-                <Image
-                  src={icon}
-                  alt={name}
-                  width={64}
-                  height={64}
-                  className="mb-4"
+              <a href={href} target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
+                <TiltedCard
+                  imageSrc={icon}
+                  altText={name}
+                  captionText={name}
+                  containerHeight="180px"
+                  containerWidth="100%"
+                  imageHeight="120px"
+                  imageWidth="120px"
+                  scaleOnHover={1.08}
+                  rotateAmplitude={16}
+                  showMobileWarning={false}
+                  showTooltip={true}
                 />
-                <span className="font-medium text-center text-sm">{name}</span>
               </a>
             </li>
           ))}
@@ -100,19 +101,27 @@ export default function Home() {
         <section className="text-center mb-12">
           <h2 className="text-xl font-semibold mb-4">Copy Area</h2>
           <div className="flex flex-col gap-4 w-full max-w-md mx-auto">
-            <button
+            <ConfettiButton
               onClick={() => copyToClipboard("irm https://massgrave.dev/get | iex", "Ativador")}
-              className="flex items-center justify-center px-6 py-4 border border-white/20 rounded-xl shadow hover:bg-[#94D33E] hover:scale-105 transition-all duration-200 cursor-pointer text-white font-medium backdrop-blur-sm"
+              className="flex items-center justify-center px-6 py-4 border border-white/20 rounded-xl shadow font-medium backdrop-blur-sm dark:bg-neutral-900 dark:text-white"
+              particleCount={80}
+              startVelocity={40}
+              angle={90}
+              spread={80}
             >
               Ativador Win 11/10 & Office
-            </button>
+            </ConfettiButton>
 
-            <button
+            <ConfettiButton
               onClick={() => copyToClipboard("r3suprimentos188810.winthor.cloudtotvs.com.br:4913", "Link WinThor")}
-              className="flex items-center justify-center px-6 py-4 border border-white/20 rounded-xl shadow hover:bg-[#94D33E] hover:scale-105 transition-all duration-200 cursor-pointer text-white font-medium backdrop-blur-sm"
+              className="flex items-center justify-center px-6 py-4 border border-white/20 rounded-xl shadow font-medium backdrop-blur-sm dark:bg-neutral-900 dark:text-white"
+              particleCount={80}
+              startVelocity={40}
+              angle={90}
+              spread={80}
             >
               Link de Acesso WinThor
-            </button>
+            </ConfettiButton>
           </div>
         </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Silk from "@/components/backgrounds/Silk/Silk";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-x-hidden bg-black`}>        
+  <Silk className="opacity-75" color="#1e3a8a" />
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
