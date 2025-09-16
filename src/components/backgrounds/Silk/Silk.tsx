@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable react/no-unknown-property */
 import React, { forwardRef, useMemo, useRef, useLayoutEffect } from 'react';
 import { Canvas, useFrame, useThree, RootState } from '@react-three/fiber';
 import { Color, Mesh, ShaderMaterial } from 'three';
@@ -89,7 +88,12 @@ const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane({ uniforms
   return (
     <mesh ref={ref}>
       <planeGeometry args={[1, 1, 1, 1]} />
-      <shaderMaterial uniforms={uniforms as any} vertexShader={vertexShader} fragmentShader={fragmentShader} />
+      <shaderMaterial
+        // Type assertion to extend ShaderMaterial with our uniforms map.
+        uniforms={uniforms as unknown as { [key: string]: IUniform }}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+      />
     </mesh>
   );
 });

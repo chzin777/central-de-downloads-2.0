@@ -2,6 +2,7 @@
 import { useState } from "react";
 import TiltedCard from "@/components/TiltedCard/TiltedCard";
 import { ConfettiButton } from "@/components/ConfettiButton/ConfettiButton";
+import Image from "next/image";
 
 const downloads = [
   {
@@ -59,14 +60,14 @@ export default function Home() {
 
       {/* LOGO */}
       <header className="w-full flex justify-center mb-8">
-          <img
-            className="dark:invert"
-            src="/imgs/r3-logo.png"
-            alt="R3 Suprimentos logo"
-            width={200}
-            height={48}
-            style={{ display: 'block' }}
-          />
+        <Image
+          className="dark:invert"
+          src="/imgs/r3-logo.png"
+          alt="R3 Suprimentos logo"
+          width={200}
+          height={48}
+          priority
+        />
       </header>
 
       {/* CONTEÚDO */}
